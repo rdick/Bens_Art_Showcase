@@ -10,7 +10,7 @@ import { HiOutlineShare, HiShare } from 'react-icons/hi';
 //Hooks
 import useWindowDimensions from '../hooks/windowDimensions';
 
-const PictureCard = memo(({ title, explanation, url, date, setChoosePhoto }) => {
+const PictureCard = memo(({ title, explanation, url, date }) => {
 	const [seeMore, setSeeMore] = useState(false);
 	const [pinPhoto, setPinPhoto] = useState(false);
 	const [pictureLiked, setPictureLiked] = useState(false);
@@ -27,7 +27,6 @@ const PictureCard = memo(({ title, explanation, url, date, setChoosePhoto }) => 
 	const handlePinning = () => {
 		let pop_up_pinning_text, pop_up_color;
 		if (!pinPhoto) {
-			setChoosePhoto(url);
 			setPinPhoto(true);
 			pop_up_pinning_text = `Pinned Photo - ${title}`;
 			pop_up_color = `success`;
@@ -57,7 +56,19 @@ const PictureCard = memo(({ title, explanation, url, date, setChoosePhoto }) => 
 	};
 
 	// Share a Photo - Copy Image Url and Pop Up
-	const handleSharing = () => {
+	const handleSharing = (e) => {
+		let reader = new FileReader();
+		let file = e.target;
+
+		reader.onloadend = () => {
+			this.setState({
+				file: file,
+				imagePreviewUrl: reader.result,
+			});
+		};
+
+		reader.readAsDataURL(file);
+
 		setSharedLink(true);
 		// Copy Photo URL
 		navigator.clipboard.writeText(url);
@@ -72,19 +83,20 @@ const PictureCard = memo(({ title, explanation, url, date, setChoosePhoto }) => 
 		}, 1000);
 	};
 
-	// If Photo URL is a Video Filter It Out
-	const filterToKeepPhotosOnly = (url) => {
-		if (url.includes('youtube') || url.includes('vimeo')) {
-			return '/no_photo_available.png';
-		} else {
-			return url;
-		}
-	};
+	// // If Photo URL is a Video Filter It Out
+	// const filterToKeepPhotosOnly = (url) => {
+	// 	if (url.includes('youtube') || url.includes('vimeo')) {
+	// 		return '/no_photo_available.png';
+	// 	} else {
+	// 		return url;
+	// 	}
+	// };
 
+	console.log(url);
 	return (
 		<motion.div layout data-isOpen={seeMore} className="card card-additions">
 			<div style={width > 700 && seeMore ? { display: 'flex' } : {}}>
-				<CardImg top style={seeMore ? { maxHeight: height - 100 } : { objectFit: 'fill', width: '100%', height: '300px' }} src={filterToKeepPhotosOnly(url)} alt="Image Of Space" />
+				<CardImg top style={seeMore ? { maxHeight: height - 100, width: '50%' } : { objectFit: 'fill', width: '100%', height: '300px' }} src={url} alt={url} />
 				<CardBody>
 					<CardTitle tag="h5" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: seeMore ? '' : 'nowrap' }}>
 						{title}
@@ -94,10 +106,10 @@ const PictureCard = memo(({ title, explanation, url, date, setChoosePhoto }) => 
 					</CardSubtitle>
 					<CardText className={seeMore ? '' : 'card-text-hidden'}>{explanation}</CardText>
 					<div style={{ marginTop: 10, display: 'flex', justifyContent: 'space-around', marginRight: 10 }}>
-						{seeMore ? <Button onClick={handleSeeMore}>Less ?</Button> : <Button onClick={handleSeeMore}>More?</Button>}
-						{pinPhoto ? <AiFillPushpin onClick={handlePinning} size={'2.0em'} color={'#28A744'} /> : <AiOutlinePushpin onClick={handlePinning} size={'2.0em'} color={'#28A744'} />}
-						{pictureLiked ? <IoHeartSharp onClick={handleLiking} size={'2.0em'} color={'red'} /> : <IoHeartOutline onClick={handleLiking} size={'2.0em'} color={'red'} />}
-						{sharedLink ? <HiShare size={'2.0em'} color={'#007bff'} /> : <HiOutlineShare onClick={handleSharing} size={'2.0em'} color={'#007bff'} />}
+						{seeMore ? <Button onClick={handleSeeMore}>Less ?</Button> : <Button onClick={handleSeeMore}>Expand</Button>}
+						{/* {pinPhoto ? <AiFillPushpin onClick={handlePinning} size={'2.0em'} color={'#28A744'} /> : <AiOutlinePushpin onClick={handlePinning} size={'2.0em'} color={'#28A744'} />} */}
+						{/* {pictureLiked ? <IoHeartSharp onClick={handleLiking} size={'2.0em'} color={'red'} /> : <IoHeartOutline onClick={handleLiking} size={'2.0em'} color={'red'} />} */}
+						{/* {sharedLink ? <HiShare size={'2.0em'} color={'#007bff'} /> : <HiOutlineShare onClick={handleSharing} size={'2.0em'} color={'#007bff'} />} */}
 					</div>
 				</CardBody>
 			</div>
