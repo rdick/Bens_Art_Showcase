@@ -11,11 +11,15 @@ function App() {
 	return (
 		<div className="App">
 			<Container>
-				<MainNavbar fixed="top" />
+				<MainNavbar />
 			</Container>
 			<Container>
 				<Biography />
 			</Container>
+			<br />
+			<br />
+			<br />
+
 			<Container>
 				<div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'space-around' }}>
 					{photos.map((photo) => {
@@ -23,6 +27,10 @@ function App() {
 					})}
 				</div>
 			</Container>
+
+			<br />
+			<br />
+			<br />
 		</div>
 	);
 }

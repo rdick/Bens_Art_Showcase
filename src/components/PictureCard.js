@@ -98,7 +98,7 @@ const PictureCard = memo(({ title, explanation, url, date }) => {
 			<div style={width > 700 && seeMore ? { display: 'flex' } : {}}>
 				<div style={{ position: 'absolute', right: '0px' }}>
 					<div style={{ opacity: '0.5', backgroundColor: 'rgba(255,255,255,.7)' }}>
-						<AiOutlineFullscreen onClick={handleSeeMore} size={20} />
+						{seeMore ? <AiOutlineFullscreenExit onClick={handleSeeMore} size={20} /> : <AiOutlineFullscreen onClick={handleSeeMore} size={20} />}
 					</div>
 				</div>
 				<CardImg top style={seeMore ? { maxHeight: height - 100, width: '50%' } : { objectFit: 'fill', width: '100%', height: '300px' }} src={url} alt={url} />
