@@ -1,21 +1,20 @@
 import './App.css';
-import { Button, Container, FormGroup, Input, Label, Spinner } from 'reactstrap';
+import { Button, Container } from 'reactstrap';
 import { useState } from 'react';
 import PictureCard from './components/PictureCard';
 import { photos } from './photos';
+import MainNavbar from './components/MainNavbar';
+import Biography from './components/Biography';
 
 function App() {
 	// Photos Loaded => Display Photos
 	return (
 		<div className="App">
 			<Container>
-				<div style={{ display: 'flex', justifyContent: 'space-around' }}>
-					<a href="https://ryandick.netlify.app/">
-						<Button color={'danger'} size={'lg'} style={{ marginBottom: '2em', width: 300 }}>
-							Learn More About Ryan?
-						</Button>
-					</a>
-				</div>
+				<MainNavbar fixed="top" />
+			</Container>
+			<Container>
+				<Biography />
 			</Container>
 			<Container>
 				<div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'space-around' }}>

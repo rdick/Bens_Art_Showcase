@@ -1,9 +1,9 @@
 export const photos = [
 	{
 		image: '12764693_10156449519320062_5047064385309877561_o.jpg',
-		title: '',
-		date_created: '',
-		description: '',
+		title: 'Photo 1',
+		date_created: '2018-12-01',
+		description: ' as;dkjf;aksdj k;lajsd;f lkjsad;lkf j ;jasd;lkfl ksdl;kfj; lkja;lskdjf l;k jl;kasjd fl;kj lk;sjd f;kljsad f;lkj ;lkjs a;dlkfjal;skdjf;lkasjdf;lk asdf;klja j;lks djfl;k sdjflk ',
 	},
 	{
 		image: 'bloodmandala1_2014.jpg',

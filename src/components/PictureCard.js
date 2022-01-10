@@ -5,7 +5,7 @@ import { CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 're
 import { motion } from 'framer-motion';
 // Icons
 import { IoHeartSharp, IoHeartOutline } from 'react-icons/io5';
-import { AiFillPushpin, AiOutlinePushpin } from 'react-icons/ai';
+import { AiFillPushpin, AiOutlinePushpin, AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai';
 import { HiOutlineShare, HiShare } from 'react-icons/hi';
 //Hooks
 import useWindowDimensions from '../hooks/windowDimensions';
@@ -96,22 +96,28 @@ const PictureCard = memo(({ title, explanation, url, date }) => {
 	return (
 		<motion.div layout data-isOpen={seeMore} className="card card-additions">
 			<div style={width > 700 && seeMore ? { display: 'flex' } : {}}>
+				<div style={{ position: 'absolute', right: '0px' }}>
+					<div style={{ opacity: '0.5', backgroundColor: 'rgba(255,255,255,.7)' }}>
+						<AiOutlineFullscreen onClick={handleSeeMore} size={20} />
+					</div>
+				</div>
 				<CardImg top style={seeMore ? { maxHeight: height - 100, width: '50%' } : { objectFit: 'fill', width: '100%', height: '300px' }} src={url} alt={url} />
-				<CardBody>
-					<CardTitle tag="h5" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: seeMore ? '' : 'nowrap' }}>
-						{title}
-					</CardTitle>
-					<CardSubtitle tag="h6" className="mb-2 text-muted">
-						{date}
-					</CardSubtitle>
-					<CardText className={seeMore ? '' : 'card-text-hidden'}>{explanation}</CardText>
-					<div style={{ marginTop: 10, display: 'flex', justifyContent: 'space-around', marginRight: 10 }}>
-						{seeMore ? <Button onClick={handleSeeMore}>Less ?</Button> : <Button onClick={handleSeeMore}>Expand</Button>}
+				{seeMore && (
+					<CardBody>
+						<CardTitle tag="h5" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: seeMore ? '' : 'nowrap' }}>
+							{title}
+						</CardTitle>
+						<CardSubtitle tag="h6" className="mb-2 text-muted">
+							{date}
+						</CardSubtitle>
+						<CardText className={seeMore ? '' : 'card-text-hidden'}>{explanation}</CardText>
+						{/* <div style={{ marginTop: 10, display: 'flex', justifyContent: 'space-around', marginRight: 10 }}> */}
 						{/* {pinPhoto ? <AiFillPushpin onClick={handlePinning} size={'2.0em'} color={'#28A744'} /> : <AiOutlinePushpin onClick={handlePinning} size={'2.0em'} color={'#28A744'} />} */}
 						{/* {pictureLiked ? <IoHeartSharp onClick={handleLiking} size={'2.0em'} color={'red'} /> : <IoHeartOutline onClick={handleLiking} size={'2.0em'} color={'red'} />} */}
 						{/* {sharedLink ? <HiShare size={'2.0em'} color={'#007bff'} /> : <HiOutlineShare onClick={handleSharing} size={'2.0em'} color={'#007bff'} />} */}
-					</div>
-				</CardBody>
+						{/* </div> */}
+					</CardBody>
+				)}
 			</div>
 		</motion.div>
 	);
