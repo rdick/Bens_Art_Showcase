@@ -6,28 +6,17 @@ const Biography = () => {
 
 	return (
 		<div style={{ color: '#2D2D2D', fontFamily: 'Raleway, sans-serif' }}>
-			{width < 700 ? (
-				<>
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-				</>
-			) : (
-				<>
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-				</>
-			)}
+			<>
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+			</>
 			<h1 style={{ fontWeight: 'bold' }}>Visual Artist & Abstract Painter {width > 500 && <br />} In Vancouver BC</h1>
 			<p style={{ width: width < 700 ? '100%' : '60%' }}>
 				Benjamin Garner is a Vancouver-based visual artist and graduate of Emily Carr University of Art and Design. His practice, though not limited to, consists primarily of painting and

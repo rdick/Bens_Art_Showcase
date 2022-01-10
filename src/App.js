@@ -5,14 +5,14 @@ import PictureCard from './components/PictureCard';
 import { photos } from './photos';
 import MainNavbar from './components/MainNavbar';
 import Biography from './components/Biography';
+import { MainPage } from './components/MainPage';
 
 function App() {
 	// Photos Loaded => Display Photos
 	return (
 		<div className="App">
-			<Container>
-				<MainNavbar />
-			</Container>
+			<MainNavbar />
+			<MainPage />
 			<Container>
 				<Biography />
 			</Container>

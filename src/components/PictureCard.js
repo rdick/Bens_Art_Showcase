@@ -19,7 +19,7 @@ const PictureCard = memo(({ title, explanation, url, date }) => {
 	const { addToast } = useToasts();
 
 	// Expand Photo and Read All Text
-	const handleSeeMore = () => {
+	const togglePhotoExpansion = () => {
 		setSeeMore(!seeMore);
 	};
 
@@ -92,16 +92,15 @@ const PictureCard = memo(({ title, explanation, url, date }) => {
 	// 	}
 	// };
 
-	console.log(url);
 	return (
 		<motion.div layout data-isOpen={seeMore} className="card card-additions">
-			<div style={width > 700 && seeMore ? { display: 'flex' } : {}}>
+			<div style={{ display: width > 700 && 'flex' }}>
 				<div style={{ position: 'absolute', right: '0px' }}>
 					<div style={{ opacity: '0.5', backgroundColor: 'rgba(255,255,255,.7)' }}>
-						{seeMore ? <AiOutlineFullscreenExit onClick={handleSeeMore} size={20} /> : <AiOutlineFullscreen onClick={handleSeeMore} size={20} />}
+						{seeMore ? <AiOutlineFullscreenExit onClick={togglePhotoExpansion} size={20} /> : <AiOutlineFullscreen onClick={togglePhotoExpansion} size={20} />}
 					</div>
 				</div>
-				<CardImg top style={seeMore ? { maxHeight: height - 100, width: '50%' } : { objectFit: 'fill', width: '100%', height: '300px' }} src={url} alt={url} />
+				<CardImg top style={seeMore ? { maxHeight: height - 100, width: width < 700 ? '100%' : '50%' } : { objectFit: 'fill', width: '100%', height: '300px' }} src={url} alt={url} />
 				{seeMore && (
 					<CardBody>
 						<CardTitle tag="h5" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: seeMore ? '' : 'nowrap' }}>
