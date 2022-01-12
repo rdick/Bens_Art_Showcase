@@ -9,7 +9,7 @@ export const MainPage = () => {
 				</h1>
 			</div>
 			<div class="fill">
-				<img src="IMG_0360.jpg" alt="" />
+				<img src="IMG_0360.jpg" alt="Main Page" />
 			</div>
 		</>
 	);
