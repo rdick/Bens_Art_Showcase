@@ -16,4 +16,5 @@ Expanded View - Description Shown
 <img width="374" alt="Screen Shot 2022-02-05 at 1 03 55 PM" src="https://user-images.githubusercontent.com/62073529/152657260-cbdde311-9308-48e8-800e-15d1a35d72cb.png">
 
 Expanded View - Description Shown
+
 <img width="374" alt="Screen Shot 2022-02-05 at 1 04 14 PM" src="https://user-images.githubusercontent.com/62073529/152657264-2c7d70c3-3da1-4cf0-b0bf-0b43d4a817ad.png">
