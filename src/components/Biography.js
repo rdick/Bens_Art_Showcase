@@ -11,7 +11,7 @@ const Biography = () => {
 				<br />
 				<br />
 				<br />
-				<br />
+				<br id="middle" />
 				<br />
 				<br />
 				<br />

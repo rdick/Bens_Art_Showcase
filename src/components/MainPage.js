@@ -5,7 +5,10 @@ export const MainPage = () => {
 		<>
 			<div className="welcome-container">
 				<h1 className="luxor-auctions">
-					Benjamin Michael Garner <AiFillDownCircle size={60} />
+					Benjamin Michael Garner{' '}
+					<a href="#middle">
+						<AiFillDownCircle size={60} />
+					</a>
 				</h1>
 			</div>
 			<div class="fill">
